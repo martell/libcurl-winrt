@@ -268,9 +268,6 @@
     <ClCompile Include="..\lib\cyassl.c">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\lib\curl_threads.c">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\lib\curl_sspi.c">
       <Filter>Source</Filter>
     </ClCompile>
@@ -328,6 +325,16 @@
     <ClCompile Include="..\lib\conncache.c">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\lib\md5.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\timeval.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\dllmain.cpp" />
+    <ClCompile Include="..\lib\curl_threads.c">
+      <Filter>Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\lib\bundles.c">
       <Filter>Source</Filter>
     </ClCompile>
@@ -337,19 +344,13 @@
     <ClCompile Include="..\lib\axtls.c">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\lib\asyn-thread.c">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\lib\asyn-ares.c">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\lib\md5.c">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\lib\amigaos.c">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\lib\timeval.c">
+    <ClCompile Include="..\lib\asyn-thread.c">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

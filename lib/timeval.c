@@ -22,7 +22,28 @@
 
 #include "timeval.h"
 
+typedef ULONGLONG(WINAPI *PtrGetTickCount64)(void);
+static PtrGetTickCount64 ptrGetTickCount64 = 0;
+
 #if defined(WIN32) && !defined(MSDOS)
+
+
+#if  WINAPI_FAMILY == WINAPI_FAMILY_APP
+static void resolvetc64()
+{
+	static bool done = false;
+	if (done)
+		return;
+
+	int kernel32 = GetModuleHandleW(L"kernel32");
+
+
+	ptrGetTickCount64 = (PtrGetTickCount64)GetProcAddress(kernel32, "GetTickCount64");
+
+	done = true;
+}
+
+#endif
 
 struct timeval curlx_tvnow(void)
 {
@@ -32,7 +53,14 @@ struct timeval curlx_tvnow(void)
   ** increases monotonically and wraps once 49.7 days have elapsed.
   */
   struct timeval now;
+
+  #if  WINAPI_FAMILY == WINAPI_FAMILY_APP
+  resolvetc64();
+  DWORD milliseconds = ptrGetTickCount64();
+  #else
   DWORD milliseconds = GetTickCount64();
+  #endif
+
   now.tv_sec = milliseconds / 1000;
   now.tv_usec = (milliseconds % 1000) * 1000;
   return now;

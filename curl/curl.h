@@ -59,7 +59,7 @@
 #if !(defined(_WINSOCKAPI_) || defined(_WINSOCK_H) || defined(__LWIP_OPT_H__))
 /* The check above prevents the winsock2 inclusion if winsock.h already was
    included, since they can't co-exist without problems */
-#  ifdef WINAPI_FAMILY_APP
+#if (WINAPI_FAMILY == WINAPI_FAMILY_APP)
 #    include <winrtsock.h>
 #  else
 #    include <winsock2.h>

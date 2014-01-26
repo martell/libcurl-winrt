@@ -148,6 +148,7 @@
     <ClInclude Include="..\lib\x509asn1.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\dllmain.cpp" />
     <ClCompile Include="..\lib\amigaos.c" />
     <ClCompile Include="..\lib\asyn-ares.c" />
     <ClCompile Include="..\lib\asyn-thread.c" />
@@ -275,37 +276,37 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <PlatformToolset>v120</PlatformToolset>
@@ -333,27 +334,27 @@
   <PropertyGroup />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <GenerateManifest>false</GenerateManifest>
-    <OutDir>$(SolutionDir)..\..\..\winrt\libraries\vs2013\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)WinRT\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <GenerateManifest>false</GenerateManifest>
-    <OutDir>$(SolutionDir)..\..\..\winrt\libraries\vs2013\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)WinRT\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <GenerateManifest>false</GenerateManifest>
-    <OutDir>$(SolutionDir)..\..\..\winrt\libraries\vs2013\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)WinRT\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <GenerateManifest>false</GenerateManifest>
-    <OutDir>$(SolutionDir)..\..\..\winrt\libraries\vs2013\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)WinRT\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <GenerateManifest>false</GenerateManifest>
-    <OutDir>$(SolutionDir)..\..\..\winrt\libraries\vs2013\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)WinRT\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <GenerateManifest>false</GenerateManifest>
-    <OutDir>$(SolutionDir)..\..\..\winrt\libraries\vs2013\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)WinRT\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -370,6 +371,8 @@
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+      <AdditionalDependencies>kernel32.lib;winrtsock.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)WinRT\redist\vs2013\$(Platform)\$(Configuration)\winrtsock_2013\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
