@@ -644,7 +644,7 @@ const char *Curl_strerror(struct connectdata *conn, int err)
     strncpy(buf, strerror(err), max);
   else {
     if(!get_winsock_error(err, buf, max) &&
-       !FormatMessageA(FORMAT_MESSAGE_FROM_SYSTEM, NULL, err,
+       !FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, err,
                        LANG_NEUTRAL, buf, (DWORD)max, NULL))
       snprintf(buf, max, "Unknown error %d (%#x)", err, err);
   }
@@ -1082,7 +1082,7 @@ const char *Curl_sspi_strerror (struct connectdata *conn, int err)
       }
     }
 #else
-    if(FormatMessageA(FORMAT_MESSAGE_FROM_SYSTEM |
+    if(FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM |
                       FORMAT_MESSAGE_IGNORE_INSERTS,
                       NULL, err, LANG_NEUTRAL,
                       msgbuf, sizeof(msgbuf)-1, NULL)) {

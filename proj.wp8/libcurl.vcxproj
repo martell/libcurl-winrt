@@ -262,6 +262,14 @@
     <ClCompile Include="..\lib\wildcard.c" />
     <ClCompile Include="..\lib\x509asn1.c" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\openssl\proj.wp8\libeay32.vcxproj">
+      <Project>{d331904d-a00a-4694-a5a3-fcff64ab5dbe}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\openssl\proj.wp8\ssleay32.vcxproj">
+      <Project>{b4b62169-5ad4-4559-8707-3d933ac5db39}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{bf4854e9-c02b-49fe-b9dd-d6373d3bb0ef}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -341,11 +349,13 @@
     <GenerateManifest>false</GenerateManifest>
     <OutDir>$(SolutionDir)WP8\redist\vs2012\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
     <IntDir>WP8\$(Platform)\$(Configuration)\</IntDir>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <GenerateManifest>false</GenerateManifest>
     <OutDir>$(SolutionDir)WP8\redist\vs2012\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
     <IntDir>WP8\$(Platform)\$(Configuration)\</IntDir>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <GenerateManifest>false</GenerateManifest>
@@ -399,14 +409,15 @@
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeaderFile />
       <PrecompiledHeaderOutputFile />
-      <AdditionalIncludeDirectories>../;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_USRDLL;NDEBUG;BUILDING_LIBCURL;HTTP_ONLY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\openssl\include;$(ProjectDir)..\..\openssl\include\openssl;$(ProjectDir)..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_USRDLL;NDEBUG;BUILDING_LIBCURL;USE_SSLEAY;CURL_DISABLE_SMTP;CURL_DISABLE_POP3;CURL_DISABLE_LDAP;CURL_DISABLE_TELNET;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>/D "_WIN32_WINNT=_WIN32_WINNT_WIN8" %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+      <AdditionalDependencies>WindowsPhoneCore.lib;RuntimeObject.lib;PhoneAppModelHost.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|arm'">
@@ -416,14 +427,15 @@
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeaderFile />
       <PrecompiledHeaderOutputFile />
-      <AdditionalIncludeDirectories>../;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_USRDLL;NDEBUG;BUILDING_LIBCURL;HTTP_ONLY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\openssl\include;$(ProjectDir)..\..\openssl\include\openssl;$(ProjectDir)..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_USRDLL;NDEBUG;BUILDING_LIBCURL;USE_SSLEAY;CURL_DISABLE_SMTP;CURL_DISABLE_POP3;CURL_DISABLE_LDAP;CURL_DISABLE_TELNET;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>/D "_WIN32_WINNT=_WIN32_WINNT_WIN8" %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+      <AdditionalDependencies>WindowsPhoneCore.lib;RuntimeObject.lib;PhoneAppModelHost.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
