@@ -344,6 +344,7 @@
     <GenerateManifest>false</GenerateManifest>
     <OutDir>$(SolutionDir)WP8\redist\vs2012\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
     <IntDir>WP8\$(Platform)\$(Configuration)\</IntDir>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <GenerateManifest>false</GenerateManifest>
